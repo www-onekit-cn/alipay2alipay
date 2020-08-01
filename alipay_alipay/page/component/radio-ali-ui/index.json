@@ -1,0 +1,7 @@
+{
+	"usingComponents":{
+		"list-item":"./mini-ali-ui/es/list/list-item/index",
+		"list":"./mini-ali-ui/es/list/index",
+		"am-radio":"./mini-ali-ui/es/am-radio/index"
+	}
+}

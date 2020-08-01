@@ -1,0 +1,18 @@
+Page({
+    data:{
+        footer:[
+            {
+                text:'修复'
+            },
+            {
+                text:'刷新'
+            }
+        ]
+    },
+    onTapLeft:function(e){
+        console.log(e,'onTapLeft');
+    },
+    onTapRight:function(e){
+        console.log(e,'onTapRight');
+    }
+});

@@ -1,0 +1,7 @@
+{
+	"usingComponents":{
+		"am-icon":"./mini-ali-ui/es/am-icon/index",
+		"input-item":"./mini-ali-ui/es/input-item/index",
+		"list":"./mini-ali-ui/es/list/index"
+	}
+}

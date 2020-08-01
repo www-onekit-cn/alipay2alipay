@@ -1,0 +1,34 @@
+Page({
+    data:{
+        value:200
+    },
+    onInputClear:function(){
+        this.setData({
+            value:''
+        });
+    },
+    onInputConfirm:function(e){
+        console.log(e);
+        my.alert({
+            content:'confirmed'
+        });
+    },
+    onInput:function(e){
+        console.log(e);
+        const {value} = e.detail;
+        this.setData({
+            value:value
+        });
+    },
+    onButtonClick:function(){
+        my.alert({
+            content:'button clicked'
+        });
+    },
+    onInputFocus:function(e){
+        console.log(e);
+    },
+    onInputBlur:function(e){
+        console.log(e);
+    }
+});

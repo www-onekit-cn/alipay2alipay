@@ -1,0 +1,5 @@
+{
+	"usingComponents":{
+		"terms":"./mini-ali-ui/es/terms/index"
+	}
+}

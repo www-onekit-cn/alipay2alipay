@@ -1,0 +1,17 @@
+Page({
+    data:{
+        systemInfo:{}
+    },
+    getSystemInfo:function(){
+        my.getSystemInfo({
+            success:(res)=>{this.setData({
+                systemInfo:res
+            })}
+        });
+    },
+    getSystemInfoSync:function(){
+        this.setData({
+            systemInfo:my.getSystemInfoSync()
+        });
+    }
+});

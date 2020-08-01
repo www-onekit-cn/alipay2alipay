@@ -1,0 +1,31 @@
+Page({
+    data:{
+        hasNetworkType:false
+    },
+    onLoad:function(){
+        this.onChange = this.onChange.bind(this);
+    },
+    onChange:function(res){
+        console.log('onNetworkChange',res);
+        this.setData({
+            hasNetworkType:true,
+            networkType:res.networkType
+        });
+    },
+    onUnload:function(){
+    },
+    getNetworkType:function(){
+        my.getNetworkType({
+            success:(res)=>{this.setData({
+                hasNetworkType:true,
+                networkType:res.networkType
+            })}
+        });
+    },
+    clear:function(){
+        this.setData({
+            hasNetworkType:false,
+            networkType:''
+        });
+    }
+});

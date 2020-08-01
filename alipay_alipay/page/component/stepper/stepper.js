@@ -1,0 +1,13 @@
+Page({
+    data:{
+        value:8
+    },
+    callBackFn:function(value){
+        console.log(value);
+    },
+    modifyValue:function(){
+        this.setData({
+            value:9
+        });
+    }
+});

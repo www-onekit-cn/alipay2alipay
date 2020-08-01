@@ -1,0 +1,8 @@
+{
+	"usingComponents":{
+		"button":"./mini-ali-ui/es/button/index",
+		"list-item":"./mini-ali-ui/es/list/list-item/index",
+		"am-checkbox":"./mini-ali-ui/es/am-checkbox/index",
+		"list":"./mini-ali-ui/es/list/index"
+	}
+}

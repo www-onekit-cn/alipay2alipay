@@ -1,0 +1,27 @@
+Page({
+    data:{
+        height:20,
+        focus:false
+    },
+    bindButtonTap:function(){
+        this.onFocus();
+    },
+    onFocus:function(){
+        this.setData({
+            focus:true
+        });
+    },
+    onBlur:function(){
+        this.setData({
+            focus:false
+        });
+    },
+    bindTextAreaBlur:function(e){
+        console.log(e.detail.value);
+    },
+    bindFormSubmit:function(e){
+        my.alert({
+            content:e.detail.value.textarea
+        });
+    }
+});

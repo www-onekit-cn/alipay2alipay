@@ -1,0 +1,43 @@
+<view class="container">
+  <button onTap="onTest" showLoading="{{showLoading}}" dataName="{{dataName}}" type="{{type}}" subtitle="{{subtitle}}" disabled="{{disabled}}" shape="{{shape}}" capsuleSize="{{capsuleSize}}" capsuleMinWidth="{{capsuleMinWidth}}">
+    {{title}}
+  </button>
+
+  <view class="title">主标题</view>
+  <input value="{{title}}" onInput="titleChange" class="inputItem"></input>
+  <view class="title">副标题</view>
+  <input value="{{subtitle}}" onInput="subtitleChange" class="inputItem"></input>
+  <view class="title">按钮类型</view>
+  <radio-group class="radio-group" onChange="typeChange" name="type">
+    <label a:for="{{types}}" class="radio" key="label-{{index}}">
+      <radio value="{{item.name}}" checked="{{item.checked}}"></radio>
+      <text class="radio-text">{{item.value}}</text>
+    </label>
+  </radio-group>
+  <view class="title">形状</view>
+  <radio-group class="radio-group" onChange="shapeChange" name="shape">
+    <label a:for="{{shapes}}" class="radio" key="label-{{index}}">
+      <radio value="{{item.name}}" checked="{{item.checked}}"></radio>
+      <text class="radio-text">{{item.value}}</text>
+    </label>
+  </radio-group>
+  <view class="title">胶囊按钮大小</view>
+  <radio-group class="radio-group" onChange="sizeChange" name="size">
+    <label a:for="{{capsuleSizes}}" class="radio" key="label-{{index}}">
+      <radio value="{{item.name}}" checked="{{item.checked}}"></radio>
+      <text class="radio-text">{{item.value}}</text>
+    </label>
+  </radio-group>
+  <view class="changeItem">
+    <checkbox onChange="onDisableChange" id="disabled__"></checkbox>
+    <label for="disabled__" style="margin-left: 8rpx;">是否禁用</label>
+  </view>
+  <view class="changeItem">
+    <checkbox onChange="onMinWidthChange" id="miniBtn__"></checkbox>
+    <label for="miniBtn__" style="margin-left: 8rpx;">是否限制胶囊按钮最小宽度</label>
+  </view>
+  <view class="changeItem">
+    <checkbox onChange="onLoadingChange" id="loading__"></checkbox>
+    <label for="loading__" style="margin-left: 8rpx;">是否显示 loading</label>
+  </view>
+</view>

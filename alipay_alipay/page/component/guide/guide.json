@@ -1,0 +1,5 @@
+{
+	"usingComponents":{
+		"guide":"./mini-ali-ui/es/guide/index"
+	}
+}

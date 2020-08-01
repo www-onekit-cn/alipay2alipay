@@ -1,0 +1,60 @@
+const position = [
+    'top',
+    'topRight',
+    'rightTop',
+    'right',
+    'rightBottom',
+    'bottomRight',
+    'bottom',
+    'bottomLeft',
+    'leftBottom',
+    'left',
+    'leftTop',
+    'topLeft'
+];
+Page({
+    data:{
+        position:position[0],
+        show:false,
+        showMask:true,
+        showIcon:true
+    },
+    onShowPopoverTap:function(){
+        this.setData({
+            show:!this.data.show
+        });
+    },
+    onNextPositionTap:function(){
+        var index = position.indexOf(this.data.position);
+        index = index >= (position.length - 1)?0:index + 1;
+        this.setData({
+            show:true,
+            position:position[index]
+        });
+    },
+    onMaskChangeTap:function(){
+        this.setData({
+            showMask:!this.data.showMask
+        });
+    },
+    onIconChangeTap:function(){
+        this.setData({
+            showIcon:!this.data.showIcon
+        });
+    },
+    onMaskClick:function(){
+        this.setData({
+            show:false
+        });
+    },
+    itemTap1:function(e){
+        my.alert({
+            content:`点击_${e.currentTarget.dataset.direction}`
+        });
+    },
+    itemTap2:function(e){
+        my.alert({
+            content:`点击_${e.currentTarget.dataset.index}`
+        });
+    }
+});

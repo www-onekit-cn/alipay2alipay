@@ -1,0 +1,3 @@
+<view>
+  <page-result type="payment" local="{{true}}" footer="{{footer}}"></page-result>
+</view>

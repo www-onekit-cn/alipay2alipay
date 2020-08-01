@@ -1,0 +1,8 @@
+{
+	"usingComponents":{
+		"button":"./mini-ali-ui/es/button/index",
+		"stepper":"./mini-ali-ui/es/stepper/index",
+		"coupon":"./mini-ali-ui/es/coupon/index",
+		"am-checkbox":"./mini-ali-ui/es/am-checkbox/index"
+	}
+}

@@ -1,0 +1,5 @@
+{
+	"usingComponents":{
+		"pagination":"./mini-ali-ui/es/pagination/index"
+	}
+}

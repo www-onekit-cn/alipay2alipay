@@ -1,0 +1,7 @@
+{
+	"usingComponents":{
+		"block-list":"/page/common/components/block-list/block-list",
+		"list-item":"./mini-ali-ui/es/list/list-item/index",
+		"list":"./mini-ali-ui/es/list/index"
+	}
+}

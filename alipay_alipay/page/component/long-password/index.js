@@ -1,0 +1,15 @@
+Page({
+    data:{
+        longPassword:''
+    },
+    onInput:function(e){
+        this.setData({
+            longPassword:e.detail.value
+        });
+    },
+    onClear:function(){
+        this.setData({
+            longPassword:''
+        });
+    }
+});

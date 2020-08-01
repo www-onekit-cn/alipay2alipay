@@ -1,0 +1,99 @@
+Page({
+    data:{
+        src:"http://flv.bn.netease.com/tvmrepo/2012/7/C/7/E868IGRC7-mobile.mp4",
+        title:'initial',
+        autoplay:'false',
+        objectFit:'contain',
+        showFullscreenBtn:'false',
+        showCenterPlayBtn:'false',
+        muted:'false',
+        loop:'false'
+    },
+    onShow:function(){
+        this.videoContext = my.createVideoContext('video');
+        this.muted = this.data.muted === 'true';
+    },
+    onPlay:function(){
+        console.log('onPlay');
+        this.setData({
+            title:'onPlay'
+        });
+    },
+    onPause:function(){
+        console.log('onPause');
+        this.setData({
+            title:'onPause'
+        });
+    },
+    onEnded:function(){
+        console.log('onEnded');
+        this.setData({
+            title:'onEnded'
+        });
+    },
+    onTimeUpdate:function(){
+        console.log('onTimeUpdate');
+        this.setData({
+            title:'onTimeUpdate'
+        });
+    },
+    onLoading:function(res){
+        my.alert({
+            content:'加载中！' + JSON.stringify(res)
+        });
+        console.log('onLoading');
+        this.setData({
+            title:'onLoading'
+        });
+    },
+    onStop:function(){
+        console.log('onStop');
+        this.setData({
+            title:'onStop'
+        });
+    },
+    play:function(){
+        this.videoContext.play();
+        this.videoContext.mute(this.muted);
+    },
+    pause:function(){
+        this.videoContext.pause();
+    },
+    seek:function(){
+        this.videoContext.seek(15);
+    },
+    mute:function(){
+        this.videoContext.mute(!this.muted);
+        this.muted = !this.muted;
+    },
+    stop:function(){
+        this.videoContext.stop();
+        this.setData({
+            muted:this.muted.toString()
+        });
+    },
+    playbackRate:function(res){
+        this.videoContext.playbackRate(1.5);
+my.alert({
+            content:'倍速播放中！' + JSON.stringify(res)
+        });
+;
+    },
+    requestFullScreen:function(){
+        this.videoContext.requestFullScreen({
+            direction:90
+        });
+    },
+    exitFullScreen:function(){
+        this.videoContext.requestFullScreen();
+        setTimeout(()=>{this.videoContext.exitFullScreen()},2000);
+    },
+    showStatusBar:function(){
+        this.videoContext.requestFullScreen();
+        setTimeout(()=>{this.videoContext.showStatusBar()},2000);
+    },
+    hideStatusBar:function(){
+        this.videoContext.requestFullScreen();
+        setTimeout(()=>{this.videoContext.hideStatusBar()},2000);
+    }
+});

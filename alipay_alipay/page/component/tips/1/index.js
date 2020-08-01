@@ -1,0 +1,40 @@
+Page({
+    data:{
+        showRectangle:true,
+        showDialog:true,
+        arrowPositions:[
+            'bottom-left',
+            'bottom-center',
+            'bottom-right',
+            'top-left',
+            'top-center',
+            'top-right',
+            'left',
+            'right'
+        ],
+        arrowPosIndex:3,
+        useButton:true
+    },
+    onCloseTap:function(){
+        this.setData({
+            showRectangle:false
+        });
+    },
+    onRectangleTap:function(){
+        my.alert({
+            content:'do something'
+        });
+    },
+    onDialogTap:function(){
+        this.setData({
+            showDialog:false
+        });
+    },
+    setInfo:function(e){
+        const {dataset} = e.target;
+        const {name} = dataset;
+        this.setData({
+            [name]:e.detail.value
+        });
+    }
+});

@@ -1,0 +1,6 @@
+{
+	"usingComponents":{
+		"picker-item":"./mini-ali-ui/es/picker-item/index",
+		"list":"./mini-ali-ui/es/list/index"
+	}
+}

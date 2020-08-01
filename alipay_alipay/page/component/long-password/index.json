@@ -1,0 +1,5 @@
+{
+	"usingComponents":{
+		"long-password":"./mini-ali-ui/es/long-password/index"
+	}
+}

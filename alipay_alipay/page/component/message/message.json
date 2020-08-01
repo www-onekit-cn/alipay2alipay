@@ -1,0 +1,7 @@
+{
+	"usingComponents":{
+		"checkbox":"./mini-ali-ui/es/am-checkbox/index",
+		"message":"./mini-ali-ui/es/message/index",
+		"radio":"./mini-ali-ui/es/am-radio/index"
+	}
+}

@@ -1,0 +1,35 @@
+Page({
+    data:{
+        value:'',
+        showVoice:false
+    },
+    handleInput:function(value){
+        this.setData({
+            value:value
+        });
+    },
+    handleClear:function(){
+        this.setData({
+            value:''
+        });
+    },
+    handleFocus:function(){
+    },
+    handleBlur:function(){
+    },
+    handleCancel:function(){
+        this.setData({
+            value:''
+        });
+    },
+    handleSubmit:function(value){
+        my.alert({
+            content:value
+        });
+    },
+    onChange:function(e){
+        this.setData({
+            showVoice:e.detail.value
+        });
+    }
+});

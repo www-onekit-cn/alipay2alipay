@@ -1,0 +1,11 @@
+Page({
+    data:{
+        value:'内容',
+        controlled:true
+    },
+    onInput:function(e){
+        this.setData({
+            value:e.detail.value
+        });
+    }
+});

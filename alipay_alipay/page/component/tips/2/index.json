@@ -1,0 +1,5 @@
+{
+	"usingComponents":{
+		"tips-plain":"./mini-ali-ui/es/tips/tips-plain/index"
+	}
+}

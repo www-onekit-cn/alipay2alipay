@@ -1,0 +1,333 @@
+const markers = [
+    {
+        id:0,
+        latitude:30.266786,
+        longitude:120.10675,
+        width:19,
+        height:31,
+        iconPath:'/image/mark_bs.png',
+        callout:{
+            content:'callout'
+        }
+    }
+];
+const animMarker = [
+    {
+        id:1,
+        latitude:30.266786,
+        longitude:120.10675,
+        width:19,
+        height:31,
+        iconPath:'/image/mark_bs.png',
+        fixedPoint:{
+            originX:200,
+            originY:150
+        },
+        markerLevel:2
+    }
+];
+const labelMarker = [
+    {
+        id:2,
+        latitude:30.266786,
+        longitude:120.10675,
+        width:19,
+        height:31,
+        iconPath:'/image/mark_bs.png',
+        label:{
+            content:"Hello Label",
+            color:"#00FF00",
+            fontSize:14,
+            borderRadius:3,
+            bgColor:"#ffffff",
+            padding:10
+        },
+        markerLevel:2
+    }
+];
+const customCalloutMarker = [
+    {
+        id:3,
+        latitude:30.266786,
+        longitude:120.10675,
+        width:19,
+        height:31,
+        iconPath:'/image/mark_bs.png',
+        "customCallout":{
+            "type":2,
+            "descList":[
+                {
+                    "desc":"预计",
+                    "descColor":"#333333"
+                },
+                {
+                    "desc":"5分钟",
+                    "descColor":"#108EE9"
+                },
+                {
+                    "desc":"到达",
+                    "descColor":"#333333"
+                }
+            ],
+            "isShow":1
+        },
+        markerLevel:2
+    }
+];
+const iconAppendStrMarker = [
+    {
+        id:34,
+        latitude:30.266786,
+        longitude:120.10675,
+        width:19,
+        height:31,
+        iconAppendStr:"iconAppendStr",
+        markerLevel:2
+    }
+];
+var myTrafficEnabled = 0;
+var myCompassEnabled = 0;
+var myScaleEnabled = 0;
+var myGestureEnabled = 0;
+const longitude = 120.10675;
+const latitude = 30.266786;
+const includePoints = [
+    {
+        latitude:30.266786,
+        longitude:120.10675
+    }
+];
+Page({
+    data:{
+        scale:14,
+        longitude:longitude,
+        latitude:latitude,
+        includePoints:includePoints
+    },
+    onReady:function(){
+        this.mapCtx = my.createMapContext('map');
+    },
+    demoResetMap:function(){
+        this.setData({
+            scale:14,
+            longitude:longitude,
+            latitude:latitude,
+            includePoints:includePoints,
+            'ground-overlays':[
+            ],
+            circles:[
+            ],
+            polygon:[
+            ],
+            polyline:[
+            ]
+        });
+        this.mapCtx.clearRoute();
+    },
+    demoGetCenterLocation:function(){
+        this.mapCtx.getCenterLocation({
+            success:(res)=>{
+                my.alert({
+                    content:(((('longitude:' + res.longitude) + '\nlatitude:') + res.latitude) + '\nscale:') + res.scale
+                });
+                console.log(res.longitude);
+                console.log(res.latitude);
+                console.log(res.scale);
+            }
+        });
+    },
+    demoMoveToLocation:function(){
+        this.mapCtx.moveToLocation();
+    },
+    demoMarkerAnimation:function(){
+        if(!my.canIUse('createMapContext.return.updateComponents')){
+            my.alert({
+                title:'客户端版本过低',
+                content:'this.mapCtx.updateComponents 需要 10.1.35 及以上版本'
+            });
+            return;
+        }
+        this.mapCtx.updateComponents({
+            'markers':animMarker
+        });
+        this.mapCtx.updateComponents({
+            command:{
+                markerAnim:[
+                    {
+                        markerId:1,
+                        type:0
+                    }
+                ]
+            }
+        });
+    },
+    demoMarkerLabel:function(){
+        if(!my.canIUse('createMapContext.return.updateComponents')){
+            my.alert({
+                title:'客户端版本过低',
+                content:'this.mapCtx.updateComponents 需要 10.1.35 及以上版本'
+            });
+            return;
+        }
+        this.mapCtx.updateComponents({
+            scale:14,
+            longitude:longitude,
+            latitude:latitude,
+            includePoints:includePoints,
+            'markers':labelMarker
+        });
+    },
+    demoMarkerCustomCallout:function(){
+        this.mapCtx.updateComponents({
+            scale:14,
+            longitude:longitude,
+            latitude:latitude,
+            includePoints:includePoints,
+            'markers':customCalloutMarker
+        });
+    },
+    demoMarkerAppendStr:function(){
+        this.mapCtx.updateComponents({
+            scale:14,
+            longitude:longitude,
+            latitude:latitude,
+            includePoints:includePoints,
+            'markers':iconAppendStrMarker
+        });
+    },
+    demoTrafficOverlay:function(){
+        if(!my.canIUse('createMapContext.return.updateComponents')){
+            my.alert({
+                title:'客户端版本过低',
+                content:'this.mapCtx.updateComponents 需要 10.1.35 及以上版本'
+            });
+            return;
+        }
+        myTrafficEnabled = (myTrafficEnabled + 1) % 2;
+        this.mapCtx.updateComponents({
+            setting:{
+                trafficEnabled:myTrafficEnabled
+            }
+        });
+    },
+    demoShowRoute:function(){
+        this.mapCtx.showRoute({
+            startLat:30.257839,
+            startLng:120.062726,
+            endLat:30.256718,
+            endLng:120.059985,
+            zIndex:4,
+            routeColor:'#FFB90F',
+            iconPath:"/image/map_alr.png",
+            iconWidth:10,
+            routeWidth:10
+        });
+    },
+    demoCompass:function(){
+        myCompassEnabled = (myCompassEnabled + 1) % 2;
+        this.mapCtx.showsCompass({
+            isShowsCompass:myCompassEnabled
+        });
+    },
+    demoScale:function(){
+        myScaleEnabled = (myScaleEnabled + 1) % 2;
+        this.mapCtx.showsScale({
+            isShowsScale:myScaleEnabled
+        });
+    },
+    demoGesture:function(){
+        myGestureEnabled = (myGestureEnabled + 1) % 2;
+        this.mapCtx.gestureEnable({
+            isGestureEnable:myGestureEnabled
+        });
+    },
+    demoPolyline:function(){
+        this.setData({
+            scale:16,
+            longitude:longitude,
+            latitude:latitude,
+            polyline:[
+                {
+                    points:[
+                        {
+                            latitude:30.264786,
+                            longitude:120.10775
+                        },
+                        {
+                            latitude:30.268786,
+                            longitude:120.10575
+                        }
+                    ],
+                    color:'#FF0000DD',
+                    width:10,
+                    dottedLine:false,
+                    iconPath:"/image/map_alr.png",
+                    iconWidth:10
+                }
+            ]
+        });
+    },
+    demoPolygon:function(){
+        this.setData({
+            scale:16,
+            longitude:longitude,
+            latitude:latitude,
+            polygon:[
+                {
+                    points:[
+                        {
+                            latitude:30.264786,
+                            longitude:120.10775
+                        },
+                        {
+                            latitude:30.268786,
+                            longitude:120.10775
+                        },
+                        {
+                            latitude:30.268786,
+                            longitude:120.10575
+                        },
+                        {
+                            latitude:30.264786,
+                            longitude:120.10575
+                        }
+                    ],
+                    fillColor:'#BB0000DD',
+                    width:5
+                }
+            ]
+        });
+    },
+    demoCircle:function(){
+        this.setData({
+            scale:16,
+            longitude:longitude,
+            latitude:latitude,
+            circles:[
+                {
+                    longitude:longitude,
+                    latitude:latitude,
+                    color:'#BB76FF88',
+                    fillColor:'#BB76FF33',
+                    radius:100,
+                    strokeWidth:3
+                }
+            ]
+        });
+    },
+    regionchange:function(e){
+        console.log('regionchange',e);
+    },
+    markertap:function(e){
+        console.log('marker tap',e);
+    },
+    controltap:function(e){
+        console.log('control tap',e);
+    },
+    tap:function(){
+        console.log('tap');
+    },
+    callouttap:function(e){
+        console.log('callout tap',e);
+    }
+});

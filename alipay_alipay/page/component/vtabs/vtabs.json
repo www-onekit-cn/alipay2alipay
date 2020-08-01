@@ -1,0 +1,6 @@
+{
+	"usingComponents":{
+		"vtabs":"./mini-ali-ui/es/vtabs/index",
+		"vtab-content":"./mini-ali-ui/es/vtabs/vtab-content/index"
+	}
+}

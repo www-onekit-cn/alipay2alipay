@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+alipay_alipay/.tea/workbench.json
+alipay_alipay/.tea/recent.json
+alipay_alipay/.tea/layout.json
+alipay_alipay/.tea/configuration/mini-program.json

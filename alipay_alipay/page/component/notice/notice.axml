@@ -1,0 +1,47 @@
+<view class="demo-item">
+  <notice marqueeProps="{{marqueeProps}}" enableMarquee="{{true}}" show="{{closeShow}}" type="{{noticeType}}" mode="{{noticeMode}}" action="{{actionText}}" onClick="actionClick" actionLeft="{{actionLeftText}}" onClickLeft="linkActionClick">
+    无限循环滚动的通告栏展示情况。文字不够继续添加文字凑数。
+  </notice>
+</view>
+<view class="demo-item">
+  <notice enableMarquee="{{true}}" show="{{closeShow}}" showIcon="{{false}}" type="{{noticeType}}" mode="{{noticeMode}}" action="{{actionText}}" onClick="actionClick" actionLeft="{{actionLeftText}}" onClickLeft="linkActionClick">
+    滚动一次的通告栏展示情况。文字不够继续添加文字凑数。无 icon
+  </notice>
+</view>
+<view class="demo-item">
+  <notice show="{{closeShow}}" type="{{noticeType}}" mode="{{noticeMode}}" action="{{actionText}}" onClick="actionClick" actionLeft="{{actionLeftText}}" onClickLeft="linkActionClick">
+    不滚动的通告栏展示情况。
+  </notice>
+</view>
+<view class="demo-item">
+  <notice show="{{closeShow}}" type="{{noticeType}}" mode="{{noticeMode}}" action="{{actionText}}" onClick="actionClick" actionLeft="{{actionLeftText}}" onClickLeft="linkActionClick" capsule="{{true}}" capsuleItem="{{capsuleItem}}">{{capsuleItem.length > 0? capsuleItem.length + ' 个优惠信息推荐':'暂无优惠信息推荐'}}
+  </notice>
+</view>
+
+<view class="demo-title">type: </view>
+<radio-group class="radio-group" onChange="typeChange" name="type">
+  <label a:for="{{type}}" class="radio" key="label-{{index}}">
+    <radio value="{{item.name}}" checked="{{item.checked}}"></radio>
+    <text class="radio-text">{{item.value}}</text>
+  </label>
+</radio-group>
+
+<view class="demo-title">mode: </view>
+<radio-group class="radio-group" onChange="modeChange" name="mode">
+  <label a:for="{{mode}}" class="radio" key="label-{{index}}">
+    <radio value="{{item.name}}" checked="{{item.checked}}"></radio>
+    <text class="radio-text">{{item.value}}</text>
+  </label>
+</radio-group>
+
+<input placeholder="右边的文字" value="{{actionText?actionText:''}}" onInput="getRightText"></input>
+<input placeholder="左边的文字" a:if="{{actionText !== '' || noticeMode !== ''}}" onInput="getLeftText"></input>
+
+
+<view class="demo-title">胶囊通告栏 item: </view>
+<checkbox-group class="radio-group" onChange="capsuleItemChange" name="capsule">
+  <label a:for="{{capsuleItemList}}" class="checkbox" key="label-{{index}}">
+    <checkbox value="{{item.name}}" checked="{{item.checked}}" style="vertical-align: middle;"></checkbox>
+    <image src="{{item.value}}" class="itemSize"></image>
+  </label>
+</checkbox-group>

@@ -1,0 +1,5 @@
+<view>
+  <page-result type="logoff" local="{{true}}" brief="此用户已注销"></page-result>
+  <view style="height: 150px; margin: 10px; background: #dddddd;"></view>
+  <view style="height: 150px; margin: 10px; background: #dddddd;"></view>
+</view>

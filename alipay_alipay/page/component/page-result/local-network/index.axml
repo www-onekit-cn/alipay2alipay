@@ -1,0 +1,5 @@
+<view>
+  <page-result type="network" local="{{true}}" brief="网络不给力"></page-result>
+  <view style="height: 150px; margin: 10px; background: #dddddd;"></view>
+  <view style="height: 150px; margin: 10px; background: #dddddd;"></view>
+</view>

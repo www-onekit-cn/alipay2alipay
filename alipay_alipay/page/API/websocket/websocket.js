@@ -1,0 +1,69 @@
+const app = getApp();
+Page({
+    data:{
+        appid:'aaaaaaaa',
+        websocketServer:'开发者服务器接口地址，必须是 wss 协议，且域名必须是后台配置的合法域名',
+        sendMessageAbility:false,
+        toSendMessage:'test',
+        closeLinkAbility:false,
+        log:''
+    },
+    onLoad:function(){
+        my.onSocketClose((res)=>{
+            my.alert({
+                content:'连接已关闭！'
+            });
+            this.setData({
+                sendMessageAbility:false,
+                closeLinkAbility:false
+            });
+        });
+        my.onSocketOpen((res)=>{
+            my.alert({
+                content:'连接已打开！'
+            });
+            this.setData({
+                sendMessageAbility:true,
+                closeLinkAbility:true
+            });
+        });
+        my.onSocketError(function(res){
+            my.alert('WebSocket 连接打开失败，请检查！' + res);
+        });
+        my.onSocketMessage((res)=>{my.alert({
+            content:'收到数据！' + JSON.stringify(res)
+        })});
+    },
+    onServerAddressComplete:function(e){
+        this.setData({
+            websocketServer:e.detail.value
+        });
+    },
+    onSendMessageReady:function(e){
+        this.setData({
+            toSendMessage:e.detail.value
+        });
+    },
+    connect_start:function(){
+        my.connectSocket({
+            url:this.data.websocketServer,
+            success:(res)=>{my.showToast({
+                content:'success'
+            })},
+            fail:()=>{my.showToast({
+                content:'fail'
+            })}
+        });
+    },
+    send_start:function(){
+        my.sendSocketMessage({
+            data:this.data.toSendMessage,
+            success:(res)=>{my.alert({
+                content:'数据发送！' + this.data.toSendMessage
+            })}
+        });
+    },
+    close_start:function(){
+        my.closeSocket();
+    }
+});

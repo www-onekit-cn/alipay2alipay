@@ -1,0 +1,45 @@
+Page({
+    data:{
+        focus:false,
+        inputValue:''
+    },
+    bindButtonTap:function(){
+        setTimeout(()=>{this.onFocus()},100);
+    },
+    onFocus:function(){
+        this.setData({
+            focus:true
+        });
+    },
+    onBlur:function(){
+        this.setData({
+            focus:false
+        });
+    },
+    bindKeyInput:function(e){
+        this.setData({
+            inputValue:e.detail.value
+        });
+    },
+    bindHideKeyboard:function(e){
+        if(e.detail.value === '123'){
+            my.hideKeyboard();
+        }
+    },
+    handleSearch:function(e){
+        console.log('search',e.detail.value);
+        this.setData({
+            search:e.detail.value
+        });
+    },
+    doneSearch:function(){
+        console.log('doneSearch',this.data.search);
+        my.hideKeyboard();
+    },
+    clearSearch:function(){
+        console.log('clear search',this.data.search);
+        this.setData({
+            search:''
+        });
+    }
+});

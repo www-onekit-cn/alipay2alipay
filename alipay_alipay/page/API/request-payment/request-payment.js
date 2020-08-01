@@ -1,0 +1,14 @@
+Page({
+    data:{},
+    tradePay:function(){
+        my.tradePay({
+            orderStr:'xxx',
+            success:(res)=>{my.alert({
+                title:res.resultCode
+            })},
+            fail:(res)=>{my.alert({
+                content:JSON.stringify(res)
+            })}
+        });
+    }
+});

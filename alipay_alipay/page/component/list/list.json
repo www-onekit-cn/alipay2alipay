@@ -1,0 +1,13 @@
+{
+	"usingComponents":{
+		"button":"./mini-ali-ui/es/button/index",
+		"am-icon":"./mini-ali-ui/es/am-icon/index",
+		"list-item":"./mini-ali-ui/es/list/list-item/index",
+		"am-switch":"./mini-ali-ui/es/am-switch/index",
+		"alphabet":"./mini-ali-ui/es/list/alphabet/index",
+		"tag":"./mini-ali-ui/es/tag/index",
+		"list":"./mini-ali-ui/es/list/index",
+		"am-radio":"./mini-ali-ui/es/am-radio/index",
+		"list-secondary":"./mini-ali-ui/es/list/list-secondary/index"
+	}
+}

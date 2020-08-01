@@ -1,0 +1,51 @@
+Page({
+    data:{
+        textArry:[
+        ],
+        imgUrl:"https://gw.alipayobjects.com/zos/rmsportal/HRJifiDxDoDRnmrIzFQn.jpg"
+    },
+    onLoad:function(){
+        this.callFn(this.data.imgUrl);
+    },
+    callFn:function(url){
+        my.showLoading({
+            content:'加载中...',
+            delay:100
+        });
+        my.ocr({
+            ocrType:'ocr_bank_card',
+            path:url,
+            success:(res)=>{
+                var data = JSON.parse(res.result.outputs[0].outputValue.dataValue);
+                var {card_num} = data;
+                this.setData({
+                    imgUrl:url,
+                    textArry:[
+                        {
+                            title:'卡号',
+                            message:card_num
+                        }
+                    ]
+                });
+                my.hideLoading();
+            },
+            fail:(res)=>{
+                my.hideLoading();
+                my.alert({
+                    title:'fail',
+                    content:JSON.stringify(res)
+                });
+            }
+        });
+    },
+    photoSubmit:function(){
+        my.chooseImage({
+            count:1,
+            success:(res)=>{this.callFn(res.apFilePaths[0])}
+        });
+    },
+    imageLoad:function(e){
+    },
+    imageError:function(e){
+    }
+});

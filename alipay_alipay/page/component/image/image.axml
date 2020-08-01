@@ -1,0 +1,9 @@
+<view class="page">
+  <view class="page-description">图片</view>
+  <view a:for="{{array}}" a:for-item='item' class="page-section">
+    <view class="page-section-title">{{item.text}}</view>
+    <view class="page-section-demo" onTap="onTap">
+      <image class="image" data-name="{{item.mode}}" onTap="onTap" mode="{{item.mode}}" src="{{src}}" onError="imageError" onLoad="imageLoad"></image>
+    </view>
+  </view>
+</view>

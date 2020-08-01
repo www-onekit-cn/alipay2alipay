@@ -1,0 +1,46 @@
+Page({
+    data:{
+        textArry:[
+        ],
+        imgUrl:"https://gw.alipayobjects.com/zos/rmsportal/GPbtvSnPedYahofahAKX.jpg"
+    },
+    onLoad:function(){
+        this.callFn(this.data.imgUrl);
+    },
+    callFn:function(url){
+        my.ocr({
+            ocrType:'ocr_vin',
+            path:url,
+            success:(res)=>{
+                var data = res.result.vin;
+                this.setData({
+                    imgUrl:url,
+                    textArry:[
+                        {
+                            title:'车架号',
+                            message:data
+                        }
+                    ]
+                });
+                my.hideLoading();
+            },
+            fail:(res)=>{
+                my.hideLoading();
+                my.alert({
+                    title:'fail',
+                    content:JSON.stringify(res)
+                });
+            }
+        });
+    },
+    photoSubmit:function(){
+        my.chooseImage({
+            count:1,
+            success:(res)=>{this.callFn(res.apFilePaths[0])}
+        });
+    },
+    imageLoad:function(e){
+    },
+    imageError:function(e){
+    }
+});
